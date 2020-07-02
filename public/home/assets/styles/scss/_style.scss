@@ -1,0 +1,23 @@
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+// Gia su, em viet banner .red roi, gio duoi cung co red nua, thi scss no biet, no ko build ra 2 attribute nhu the, no tu dong toi uu, ko bi. thua` code
+// 2. Dung dau & thay cho parent class
+// SCSS thi cac em tu tim hieu them
+// save phat nao koala tu biet va build css cho em
+
+.banner {
+    background-color: cornflowerblue;
+    color: green;
+    &-content{
+        text-align: center;
+    }
+}
+
+
+
+
