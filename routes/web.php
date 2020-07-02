@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('gioithieu',function() {
     return view('homepage.gioithieu');
 });
+Route::get('lienhe',function() {
+    return view('homepage.lienhe');
+});
