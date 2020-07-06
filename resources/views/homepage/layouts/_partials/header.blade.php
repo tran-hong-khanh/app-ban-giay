@@ -14,7 +14,7 @@
                     <div class="logo">
                         <h1 class="hidden">Rossy Store</h1>
                         <a href="index.html" title="Rossy Store">
-                            <img src="home/assets/images/logo.png" alt="Rossy Store">
+                            <img src="{{ asset('home/assets/images/logo.png')}}" alt="Rossy Store">
                         </a>
                     </div>
                 </div>

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::get('gioithieu',function() {
     return view('homepage.gioithieu');
@@ -22,3 +22,22 @@ Route::get('gioithieu',function() {
 Route::get('lienhe',function() {
     return view('homepage.lienhe');
 });
+
+Route::get('/home', function () {
+    return redirect()->route('products');
+});
+
+// Route::get('/', function () {
+//     return redirect()->route('products');
+// });
+Route::get('/sanpham','HomeController@products')->name('products');
+
+// Route::get('/khach-hang/account', 'HomeController@account')->name('account');
+// Route::get('/khach-hang/profile', 'HomeController@customerProfile')->name('profile');
+// Route::post('khach-hang/update-profile', 'HomeController@updateProfile')->name('updateProfile');
+// Route::post('khach-hang/update-profile-cart', 'HomeController@updateProfileCart')->name('updateProfileCart');
+// Route::post('/khach-hang/login', 'HomeController@login')->name('customer_login');
+// Route::post('/khach-hang/register', 'HomeController@register')->name('customer_register');
+// Route::get('/khach-hang/logout', 'HomeController@logout')->name('customer_logout');
+
+Auth::routes();
