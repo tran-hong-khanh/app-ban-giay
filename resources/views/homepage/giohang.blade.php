@@ -19,6 +19,19 @@
 <section id="cart">
 	<div class="container">
 		<div class="row" id="cart">
+		@if(Session::has('success'))
+			<div class="woocommerce-message"><a href="{{route('homepage')}}"
+												class="button wc-forward">Tiếp tục xem sản phẩm</a> &ldquo;{{session('success')}}</div>
+		@endif
+		@if ($errors->any())
+			<div class="alert alert-danger">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
 			<div class="col-xs-12">
 				<h1 class="title-head-cart">Giỏ hàng của bạn</h1>
 			</div>
@@ -37,43 +50,45 @@
 								<th>Thành tiền</th>
 								<th></th>
 							</tr>
-							
-							<tr>
-								<td class="image">
-									<a href="">
-										<img src="{{ asset('home/assets/images/tranglunarglide7runningshoe1.jpg')}}" alt="Nike LunarGlide 7">
-									</a>
-								</td>
-								<td class="infor">
-									<a href="/nike-lunarglide-7?variantid=12206648">
-										<div><h3 class="product-title">Nike LunarGlide 7</h3></div>
-										
-										<div class="variant-title">Trắng / 39</div>
-										
-										<div class="price visible-xs">2.718.000₫</div>
-									</a>
-								</td>
-								<td class="price hidden-xs">2.718.000₫</td>
-								<td class="qty">
-									<input type="number" class="form-control" size="4" name="Lines" min="1" id="updates_3696010" value="1" onfocus="this.select();">
-								</td>
-								<td class="price hidden-xs">2.718.000₫</td>
-								<td class="remove">
-									<a href="/cart/change?line=1&amp;quantity=0" class="cart">
-										<svg class="svg-next-icon svg-next-icon-size-24">
-											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#track_cart"></use>
-										</svg>
-										Xóa
-									</a>
-								</td>
-							</tr>
-							
+							@if($items)
+                            	@foreach($items as $item)
+								<tr>
+									<td class="image">
+										<a href="">
+											<img src="{{$item['attributes']['img']}}" alt="{{$item['name']}}">
+										</a>
+									</td>
+									<td class="infor">
+										<a href="/nike-lunarglide-7?variantid=12206648">
+											<div><h3 class="product-title">{{$item['name']}}</h3></div>
+											
+											<div class="variant-title">Trắng / 39</div>
+											
+											<div class="price visible-xs">{{number_format($item['price'], 0, ',', ',')}} VNĐ</div>
+										</a>
+									</td>
+									<td class="price hidden-xs">{{number_format($item['price'], 0, ',', ',')}} VNĐ</td>
+									<td class="qty">
+										<input type="number" class="form-control" size="4" name="Lines" min="1" id="updates_3696010" value="{{$item['quantity']}}" onfocus="this.select();">
+									</td>
+									<td class="price hidden-xs">{{number_format($item['price'] * $item['quantity'], 0, ',', ',')}} VNĐ</td>
+									<td class="remove">
+										<a href="/cart/change?line=1&amp;quantity=0" class="cart">
+											<svg class="svg-next-icon svg-next-icon-size-24">
+												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#track_cart"></use>
+											</svg>
+											Xóa
+										</a>
+									</td>
+								</tr>
+								@endforeach
+                            @endif
 						</tbody></table>
 					</div>
 					<div class="row">
 						<div class="col-sm-12 col-xs-12">
 							<div class="text-right total-cart-money">
-								Thành tiền: <span>2.718.000₫</span>
+								Thành tiền: <span>{{number_format(\Cart::getSubTotal(), 0, ',', ',')}} VNĐ</span>
 							</div>
 							<div class="text-right">
 								<a class="continue-shopping" title="Mua tiếp" href="//rossy-store.bizwebvietnam.net">Tiếp tục mua hàng</a>

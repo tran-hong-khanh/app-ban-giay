@@ -362,7 +362,7 @@
 											<h3 class="product-title">{{$product->name}}</h3>
 										</a>
 										<p class="product-box-price clearfix flexbox-grid-default">
-											<span class="price-new flexbox-content text-left">{{$product->price}}</span>
+											<span class="price-new flexbox-content text-left">{{number_format($product->price, 0, ',', ',')}}VNĐ</span>
 										</p>
 									</div>
 								</div>

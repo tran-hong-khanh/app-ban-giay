@@ -44,28 +44,36 @@ class HomeController extends Controller
         $product = DB::table('product')->where('id', $id)->first();
         $catalog = $product->catalog_id;
         $related_products = DB::table('product')->where('catalog_id', $catalog)->get();
+        $name = $product->name;
+        $img = $product->image_link;
         $price = $product->price;
         $product_id = $product->id;
         $status = 0;
-        $items = [$price, $product_id, $status];
+        $items = [$price, $product_id, $name, $img, $status];
         return view('homepage.chitietsanpham', ['product' => $product, 'related_products' => $related_products], compact('items'));
     }
     public function giohang()
     {
-        return view('homepage.giohang');
+        $items = \Cart::getContent();
+        $items = $items ? $items->toArray() : [];
+        return view('homepage.giohang', compact('items'));
     }
 
     public function updateCart(Request $request)
     {
         $data = $request->all();
-        // dd($data);
-        $transaction = [
-            
-        ];
-        $order = [
-
-        ];
-        return view('homepage.giohang');
+        // dd($data['Lines']);
+        // dd($data['items']);
+        if (isset($data['items'])) {
+            \Cart::add($data['items'][1], $data['items'][2], $data['items'][0], $data['Lines'], [
+                        'status' => $data['items'][4],
+                        'img' => $data['items'][3]
+                    ]);
+            \Session::flash('success', 'Cập nhật giỏ hàng thành công');
+        return redirect()->route('giohang');
+        } else {
+            return redirect()->route('giohang')->withErrors(['error' => 'Chưa có sản phẩm nào']);
+        }
     }
 
     public function products()

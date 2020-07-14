@@ -72,12 +72,7 @@
 
     </ol>
 </div>			
-				
-				
-
-
-				
-				
+					
 			</div>
 			<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 pd5 information-product">
 				<div class="product-title">
@@ -86,7 +81,7 @@
 				<div class="clearfix product-sku-date">
 					<span class="pull-left product-sku" id="pro_sku">Mã sản phẩm: 859553-001-1</span>
 				</div>
-				<div class="product-price" id="price-preview"><span>{{$product->price}}</span></div>
+				<div class="product-price" id="price-preview"><span>{{number_format($product->price, 0, ',', ',')}}VNĐ</span></div>
 				
 							
 				<form id="add-item-form" action="{{route('updateCart')}}" method="post" class="variants clearfix variant-style">
