@@ -52,7 +52,7 @@ class HomeController extends Controller
         $items = [$price, $product_id, $name, $img, $status];
         return view('homepage.chitietsanpham', ['product' => $product, 'related_products' => $related_products], compact('items'));
     }
-    public function giohang()
+    public function giohang(Request $request)
     {
         $items = \Cart::getContent();
         $items = $items ? $items->toArray() : [];
@@ -62,18 +62,40 @@ class HomeController extends Controller
     public function updateCart(Request $request)
     {
         $data = $request->all();
+        $items = \Cart::getContent();
+        $count = 0;
         // dd($data['Lines']);
-        // dd($data['items']);
+        // dd($data['quantity']);
+        // dd($items);
+        if (isset($data['quantity'])) {
+            foreach($items as $index => $item) {
+                \Cart::remove($item['id']);
+                \Cart::add($item['id'], $item['name'], $item['price'], $data['quantity'][$count], [
+                        'status' => $item['attributes']['status'],
+                        'img' => $item['attributes']['img']
+                    ]);
+                $count = $count + 1 ;
+            }
+            \Session::flash('success', 'Cập nhật giỏ hàng thành công');
+            //return redirect()->route('giohang');
+        }
         if (isset($data['items'])) {
             \Cart::add($data['items'][1], $data['items'][2], $data['items'][0], $data['Lines'], [
                         'status' => $data['items'][4],
                         'img' => $data['items'][3]
                     ]);
             \Session::flash('success', 'Cập nhật giỏ hàng thành công');
-        return redirect()->route('giohang');
+            return redirect()->route('giohang');
         } else {
-            return redirect()->route('giohang')->withErrors(['error' => 'Chưa có sản phẩm nào']);
+            // return redirect()->route('giohang')->withErrors(['error' => 'Chưa có sản phẩm nào']);
+            return redirect()->route('giohang');
         }
+    }
+     public function removeItemInCart($id)
+    {
+        \Cart::remove($id);
+        \Session::flash('success', 'Cập nhật giỏ hàng thành công');
+        return redirect()->route('giohang');
     }
 
     public function products()

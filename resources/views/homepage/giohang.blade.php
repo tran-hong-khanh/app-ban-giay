@@ -37,9 +37,10 @@
 			</div>
 			<div class="col-xs-12">
 				
-				<form action="/cart" method="post" id="cartform">
+				<form action="{{route('updateCart')}}" method="post" id="cartform">
+				{{csrf_field()}}
 					<h4 class="cart-number">
-						Bạn đang có <span style="color: #58b3f0">1 sản phẩm</span> trong giỏ hàng.
+						Bạn đang có <span style="color: #58b3f0">{{\Cart::getTotalQuantity()}} sản phẩm</span> trong giỏ hàng.
 					</h4>
 					<div class="clearfix overflow-cart mb15">
 						<table id="table-cart">
@@ -69,11 +70,17 @@
 									</td>
 									<td class="price hidden-xs">{{number_format($item['price'], 0, ',', ',')}} VNĐ</td>
 									<td class="qty">
-										<input type="number" class="form-control" size="4" name="Lines" min="1" id="updates_3696010" value="{{$item['quantity']}}" onfocus="this.select();">
+										<!-- <input type="number" class="form-control" size="4" name="Lines" min="1" id="updates_3696010" value="{{$item['quantity']}}" onfocus="this.select();"> -->
+										<input type="number" id="quantity_5e60bcd2bb598"
+                                                                           class="input-text qty text" step="1" min="0"
+                                                                           max=""
+                                                                           name="quantity[]"
+                                                                           value="{{$item['quantity']}}" title="SL" size="4"
+                                                                           pattern="[0-9]*" inputmode="numeric"/>
 									</td>
 									<td class="price hidden-xs">{{number_format($item['price'] * $item['quantity'], 0, ',', ',')}} VNĐ</td>
 									<td class="remove">
-										<a href="/cart/change?line=1&amp;quantity=0" class="cart">
+										<a href="{{route('removeItemInCart', ['id' => $item['id']])}}" class="cart" aria-label="Xóa sản phẩm này">
 											<svg class="svg-next-icon svg-next-icon-size-24">
 												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#track_cart"></use>
 											</svg>
