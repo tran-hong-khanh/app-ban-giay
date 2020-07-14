@@ -12,7 +12,7 @@
 						<li><a href="/account" itemprop="url" target="_self"><span itemprop="title">Tài khoản</span></a>
 						</li>
 						<li><i class="fa fa-angle-right"></i></li>
-						<li class="active"><span itemprop="title">Đăng nhập</span></li>
+						<li class="active"><span itemprop="title">Đăng kí</span></li>
 
 					</ol>
 				</div>
@@ -23,22 +23,32 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
+					@if ($errors->any())
+						<div class="alert alert-danger">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
 					<div id="register" class="userbox">
 						<h1>Đăng ký</h1>
-						<form accept-charset="UTF-8" action="/account/register" id="customer_register" method="post">
+						<form accept-charset="UTF-8" action="/khach-hang/register" id="customer_register" method="post">
+						{{csrf_field()}}
 							<input name="FormType" type="hidden" value="customer_register">
 							<input name="utf8" type="hidden" value="true">
 
-							<div id="last_name" class="input-group input-account mb15">
+							<div id="name" class="input-group input-account mb15">
 								<label class="input-group-addon"><i class="icon-userico"></i></label>
-								<input required="" type="text" name="lastname" placeholder="Họ" id="lastname"
+								<input required="" type="text" name="name" placeholder="user name" id="name"
 									class="form-control" size="30">
 							</div>
-							<div id="first_name" class="input-group input-account mb15">
+							<!-- <div id="first_name" class="input-group input-account mb15">
 								<label class="input-group-addon"><i class="icon-userico"></i></label>
 								<input required="" type="text" name="firstname" placeholder="Tên" id="firstname"
 									class="form-control" size="30">
-							</div>
+							</div> -->
 
 							<div id="email" class="input-group input-account mb15">
 								<label class="input-group-addon"><i class="icon-login icon-envelope"></i></label>
@@ -56,7 +66,7 @@
 								<input class="btn" type="submit" value="Đăng ký">
 							</div>
 							<div class="req_pass">
-								<a class="come-back" href="dangnhap.html">Quay về</a>
+								<a class="come-back" href="{{route('account')}}">Quay về</a>
 							</div>
 						</form>
 					</div>

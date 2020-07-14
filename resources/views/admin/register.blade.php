@@ -1,6 +1,5 @@
 @extends('homepage.layouts.template')
 @section('content')
-
 <div class="header-navigate clearfix mb15">
 		<div class="container">
 			<div class="row">
@@ -13,7 +12,7 @@
 						<li><a href="/account" itemprop="url" target="_self"><span itemprop="title">Tài khoản</span></a>
 						</li>
 						<li><i class="fa fa-angle-right"></i></li>
-						<li class="active"><span itemprop="title">Đăng nhập</span></li>
+						<li class="active"><span itemprop="title">Đăng kí ADMIN</span></li>
 
 					</ol>
 				</div>
@@ -24,59 +23,51 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
-					<div id="login" class="userbox">
-						<h1>
-							Đăng nhập
-						</h1>
-						<form accept-charset="UTF-8" action="/account/login" id="customer_login" method="post">
-							<input name="FormType" type="hidden" value="customer_login">
+					@if ($errors->any())
+						<div class="alert alert-danger">
+							<ul>
+								@foreach ($errors->all() as $error)
+									<li>{{ $error }}</li>
+								@endforeach
+							</ul>
+						</div>
+					@endif
+					<div id="register" class="userbox">
+						<h1>Đăng ký</h1>
+						<form accept-charset="UTF-8" action="/khach-hang/register" id="customer_register" method="post">
+						{{csrf_field()}}
+							<input name="FormType" type="hidden" value="customer_register">
 							<input name="utf8" type="hidden" value="true">
 
-							<div class="input-group input-account mb15">
-								<label class="input-group-addon">
-									<i class="icon-envelope"></i>
-								</label>
-								<input required="" type="email" name="email" id="customer_email" placeholder="Email"
-									class="form-control">
-							</div>
-							<div class="input-group input-account mb15">
-								<label class="input-group-addon">
-									<i class="icon-shield"></i>
-								</label>
-								<input required="" type="password" name="password" id="customer_password"
-									placeholder="Mật khẩu" class="form-control" size="16">
-							</div>
-							<div class="action_bottom mb15">
-								<input class="btn btn-signin" type="submit" value="Đăng nhập">
-							</div>
-							<div class="req_pass">
-								<a href="#" onclick="showRecoverPasswordForm();return false;">Quên mật khẩu?</a>
-								hoặc <a href="dangky.html" title="Đăng ký">Đăng ký</a>
-							</div>
-							<input name="returnUrl" type="hidden" value="/account">
-						</form>
-					</div>
-					<div id="recover-password" style="display:none;" class="userbox">
-						<h1>Phục hồi mật khẩu</h1>
-						<form accept-charset="UTF-8" action="/account/recover" id="recover_customer_password"
-							method="post">
-							<input name="FormType" type="hidden" value="recover_customer_password">
-							<input name="utf8" type="hidden" value="true">
-
-							<div class="input-group input-account mb15">
-								<label class="input-group-addon">
-									<i class="icon-envelope"></i>
-								</label>
-								<input type="email" name="email" id="recover-email" placeholder="Email"
+							<div id="name" class="input-group input-account mb15">
+								<label class="input-group-addon"><i class="icon-userico"></i></label>
+								<input required="" type="text" name="name" placeholder="user name" id="name"
 									class="form-control" size="30">
 							</div>
+							<!-- <div id="first_name" class="input-group input-account mb15">
+								<label class="input-group-addon"><i class="icon-userico"></i></label>
+								<input required="" type="text" name="firstname" placeholder="Tên" id="firstname"
+									class="form-control" size="30">
+							</div> -->
+
+							<div id="email" class="input-group input-account mb15">
+								<label class="input-group-addon"><i class="icon-login icon-envelope"></i></label>
+								<input required="" type="email" placeholder="Email" name="email" id="email"
+									class="form-control" size="30">
+							</div>
+
+							<div id="password" class="input-group input-account mb15">
+								<label class="input-group-addon"><i class="icon-login icon-shield"></i></label>
+								<input required="" type="password" placeholder="Mật khẩu" name="password" id="password"
+									class="form-control" size="30">
+							</div>
+
 							<div class="action_bottom mb15">
-								<input class="btn" type="submit" value="Gửi">
+								<input class="btn" type="submit" value="Đăng ký">
 							</div>
 							<div class="req_pass">
-								<a href="#" onclick="hideRecoverPasswordForm();return false;">Hủy</a>
+								<a class="come-back" href="{{route('account')}}">Quay về</a>
 							</div>
-							<input name="returnUrl" type="hidden" value="/account">
 						</form>
 					</div>
 				</div>
@@ -132,12 +123,14 @@
 										<option value="">39</option>
 									</select>
 								</div>
+
 								<!-- end col -->
 							</div>
 							<div class="space-ten"></div>
 							<div class="btn-ground">
 								<button type="button" class="btn btn-primary"><span
 										class="glyphicon glyphicon-shopping-cart"></span> Thêm vào giỏ</button>
+
 							</div>
 						</div>
 					</div>
@@ -145,7 +138,6 @@
 			</div>
 		</div>
 	</div>
-
 @endsection
 
 @section('page-script')

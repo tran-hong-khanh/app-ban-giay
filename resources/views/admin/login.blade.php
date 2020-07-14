@@ -7,7 +7,7 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5">
 					<ol class="breadcrumb breadcrumb-arrow" itemscope=""
 						itemtype="http://data-vocabulary.org/Breadcrumb">
-						<li><a href="{{route('products')}}" itemprop="url" target="_self">Trang chủ</a></li>
+						<li><a href="/" itemprop="url" target="_self">Trang chủ</a></li>
 
 						<li><i class="fa fa-angle-right"></i></li>
 						<li><a href="/account" itemprop="url" target="_self"><span itemprop="title">Tài khoản</span></a>
@@ -26,9 +26,9 @@
 				<div class="col-xs-12">
 					<div id="login" class="userbox">
 						<h1>
-							Đăng nhập
+							Đăng nhập ADMIN
 						</h1>
-						<form accept-charset="UTF-8" action="/khach-hang/login" id="customer_login" method="post">
+						<form accept-charset="UTF-8" action="/admin/login" id="customer_login" method="post">
 							{{csrf_field()}}
 							<input name="FormType" type="hidden" value="customer_login">
 							<input name="utf8" type="hidden" value="true">
@@ -52,7 +52,7 @@
 							</div>
 							<div class="req_pass">
 								<a href="#" onclick="showRecoverPasswordForm();return false;">Quên mật khẩu?</a>
-								hoặc <a href="{{route('customer_register')}}" title="Đăng ký">Đăng ký</a>
+								hoặc <a href="{{route('render_register')}}" title="Đăng ký">Đăng ký</a>
 							</div>
 							<input name="returnUrl" type="hidden" value="/account">
 						</form>

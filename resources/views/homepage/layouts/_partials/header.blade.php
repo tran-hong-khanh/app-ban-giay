@@ -23,17 +23,18 @@
                         <li class="search-header">
 
                             <form action="/search">
+                            {{csrf_field()}}
                                 <input type="hidden" name="type" value="product">
                                 <input type="text" class="form-control" name="q" placeholder="Tìm kiếm...">
                             </form>
                         </li>
                         <li>
-                            <a href="dangnhap.html">
+                            <a href="{{route('account')}}">
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li id="cart-target" class="cart">
-                            <a href="giohang.html" class="cart " title="Giỏ hàng">
+                            <a href="{{route('giohang')}}" class="cart " title="Giỏ hàng">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                                 <span id="cart-count">1</span>
                             </a>
@@ -54,13 +55,13 @@
                     <div class="col-lg-12 col-md-12 col-sm-12">
                         <ul class="nav navbar-nav clearfix flexbox-grid flexbox-justifyContent-center">
                             <li class=" current">
-                                <a href="trangchu.html" title="Trang chủ">Trang chủ</a>
+                                <a href="{{route('products')}}" title="Trang chủ">Trang chủ</a>
                             </li>
                             <li class="">
-                                <a href="gioithieu.html" title="Giới thiệu">Giới thiệu</a>
+                                <a href="{{route('gioithieu')}}" title="Giới thiệu">Giới thiệu</a>
                             </li>
                             <li class="dropdown">
-                                <a href="sanpham.html" title="Giày nam">Giày nam <i class="fa fa-angle-down"></i></a>
+                                <a href="{{route('products')}}" title="Giày nam">Giày nam <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-content submenu-level1-children" role="menu">
                                     <li class="current">
                                         <a href="/" class="current" title="Lifestyle">Lifestyle</a>
@@ -86,13 +87,13 @@
                                 </ul>
                             </li>
                             <li class="">
-                                <a href="sanpham.html" title="Giày nữ">Giày nữ</a>
+                                <a href="{{route('products')}}" title="Giày nữ">Giày nữ</a>
                             </li>
                             <li class="">
-                                <a href="tintuc.html" title="Tin tức">Tin tức</a>
+                                <a href="{{route('tintuc')}}" title="Tin tức">Tin tức</a>
                             </li>
                             <li class="">
-                                <a href="lienhe.html" title="Liên hệ">Liên hệ</a>
+                                <a href="{{route('lienhe')}}" title="Liên hệ">Liên hệ</a>
                             </li>
                         </ul>
                     </div>

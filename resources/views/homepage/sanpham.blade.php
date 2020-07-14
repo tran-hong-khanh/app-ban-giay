@@ -32,45 +32,24 @@
 							</div>
 							<div class="filter-box">
 								<ul id="menusidebarleft" class="menu-collection clearfix mb15">
-
-
 									<li class="">
-										<a href="/" title="Trang chủ">Trang chủ</a>
+										<a href="{{route('products')}}" title="Trang chủ">Trang chủ</a>
 									</li>
-
-
-
 									<li class="">
-										<a href="/gioi-thieu" title="Giới thiệu">Giới thiệu</a>
+										<a href="{{route('gioithieu')}} title="Giới thiệu">Giới thiệu</a>
 									</li>
-
-
-
 									<li class="active submenu-parent" aria-expanded="false">
-										<a href="/giay-nam" title="Giày nam">Giày nam</a>
-
-
+										<a href="{{route('products')}}" title="Giày nam">Giày nam</a>
 									</li>
-
-
-
 									<li class="">
-										<a href="/giay-nu" title="Giày nữ">Giày nữ</a>
+										<a href="{{route('products')}}" title="Giày nữ">Giày nữ</a>
 									</li>
-
-
-
 									<li class="">
-										<a href="/tin-tuc" title="Tin tức">Tin tức</a>
+										<a href="{{route('tintuc')}}" title="Tin tức">Tin tức</a>
 									</li>
-
-
-
 									<li class="">
-										<a href="/lien-he" title="Liên hệ">Liên hệ</a>
+										<a href="{{route('lienhe')}}" title="Liên hệ">Liên hệ</a>
 									</li>
-
-
 								</ul>
 							</div>
 						</div>
@@ -86,14 +65,12 @@
 							</div>
 							<div class="filter-box" id="filter-vendor">
 								<ul>
-
 									<li>
 										<label data-filter="nike" class="nike">
 											<input type="checkbox" value="(Nike)">
 											<span>Nike</span>
 										</label>
 									</li>
-
 								</ul>
 							</div>
 						</div>
@@ -101,9 +78,7 @@
 
 						<div class="group-collection" aria-expanded="true" style="height:200px;">
 							<div class="title-block dropdown-filter">
-
 								<h3 class="title-group">Giá</h3>
-
 								<i class="fa fa-minus flexbox-grid-default flexbox-justifyContent-center flexbox-alignItems-center"
 									aria-hidden="true"></i>
 							</div>
@@ -151,111 +126,72 @@
 
 						<div class="group-collection" aria-expanded="true">
 							<div class="title-block dropdown-filter">
-
 								<h3 class="title-group">Màu sắc</h3>
-
 								<i class="fa fa-minus flexbox-grid-default flexbox-justifyContent-center flexbox-alignItems-center"
 									aria-hidden="true"></i>
 							</div>
 							<div class="filter-box" id="filter-color">
 								<ul class="clearfix">
-
-
-
 									<li>
 										<label style="background:#ffffff" class="first-color">
 											<input type="checkbox" value="(Trắng)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#000000">
 											<input type="checkbox" value="(Đen)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#f44336">
 											<input type="checkbox" value="(Đỏ)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#f06292">
 											<input type="checkbox" value="(Hồng)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#9c27b0">
 											<input type="checkbox" value="(Tím)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#2196f3">
 											<input type="checkbox" value="(Xanh)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#3f51b5">
 											<input type="checkbox" value="(Xanh Dương)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#4caf50">
 											<input type="checkbox" value="(Xanh Lá)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#ffb74d">
 											<input type="checkbox" value="(Cam)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#cfd8dc">
 											<input type="checkbox" value="(Xám)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#8d6e63">
 											<input type="checkbox" value="(Nâu)">
 										</label>
 									</li>
-
-
-
 									<li>
 										<label style="background:#ffee58">
 											<input type="checkbox" value="(Vàng)">
 										</label>
 									</li>
-
 								</ul>
 							</div>
 						</div>
@@ -263,30 +199,24 @@
 
 						<div class="group-collection" aria-expanded="true">
 							<div class="title-block dropdown-filter">
-
 								<h3 class="title-group">Kích thước</h3>
-
 								<i class="fa fa-minus flexbox-grid-default flexbox-justifyContent-center flexbox-alignItems-center"
 									aria-hidden="true"></i>
 							</div>
 							<div class="filter-box" id="filter-size">
-
 								<ul class="filter-size clearfix">
-
 									<li>
 										<label data-filter="35" class="35">
 											<input type="checkbox" value="(35)">
 											<span>35</span>
 										</label>
 									</li>
-
 									<li>
 										<label data-filter="36" class="36">
 											<input type="checkbox" value="(36)">
 											<span>36</span>
 										</label>
 									</li>
-
 									<li>
 										<label data-filter="37" class="37">
 											<input type="checkbox" value="(37)">
@@ -374,7 +304,6 @@
 								</ul>
 							</div>
 						</div>
-
 					</div>
 				</div>
 				<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
@@ -412,7 +341,7 @@
 							<div class="product-information">
 								<div class="product-detail clearfix">
 									<div class="product-image image-resize">
-										<a href="/nike-sock-dart-se-premium" title="Nike Sock Dart SE Premium">
+										<a href="{{route('chitietsanpham', ['id' => $product->id, 'name' => $product->name])}}" title={{$product->name}}>
 
 											<picture>
 												<img src="{{$product->image_link}}"
@@ -422,14 +351,14 @@
 										</a>
 										<div class="box-position-quickview">
 											<div class="wrap-btn-quickview">
-												<a href="javascript:void(0);" class="quickview"
-													data-handle="/nike-sock-dart-se-premium" title="Xem nhanh">Xem
+												<a href="{{route('chitietsanpham', ['id' => $product->id, 'name' => $product->name])}}" class="quickview"
+													data-handle="{{route('chitietsanpham', ['id' => $product->id, 'name' => $product->name])}}" title="Xem nhanh">Xem
 													nhanh</a>
 											</div>
 										</div>
 									</div>
 									<div class="product-info">
-										<a href="/nike-sock-dart-se-premium" title="Nike Sock Dart SE Premium">
+										<a href="{{route('chitietsanpham', ['id' => $product->id, 'name' => $product->name])}}" title="Nike Sock Dart SE Premium">
 											<h3 class="product-title">{{$product->name}}</h3>
 										</a>
 										<p class="product-box-price clearfix flexbox-grid-default">

@@ -60,7 +60,7 @@
                                 </li>
                             </ul>
                             <div class="dkbocongthuong">
-                                <img src="{{ asset('home/assets/images/dkbocongthuong.png" alt="Bộ công thương')}}">
+                                <img src="{{ asset('home/assets/images/dkbocongthuong.png')}}" alt="Bộ công thương')}}">
                             </div>
                         </div>
                     </div>
