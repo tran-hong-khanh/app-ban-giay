@@ -22,7 +22,7 @@
                     <ul class="icon-control-header text-right">
                         <li class="search-header">
 
-                            <form action="/search">
+                            <form action="{{route('searchByName')}}">
                             {{csrf_field()}}
                                 <input type="hidden" name="type" value="product">
                                 <input type="text" class="form-control" name="q" placeholder="Tìm kiếm...">
@@ -64,16 +64,16 @@
                                 <a href="{{route('products')}}" title="Giày nam">Giày nam <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-content submenu-level1-children" role="menu">
                                     <li class="current">
-                                        <a href="/" class="current" title="Lifestyle">Lifestyle</a>
+                                        <a href="{{route('lifestyleProducts')}}" class="current" title="Lifestyle">Lifestyle</a>
                                     </li>
                                     <li class="current">
-                                        <a href="/" class="current" title="Running">Running</a>
+                                        <a href="{{route('runningProducts')}}" class="current" title="Running">Running</a>
                                     </li>
                                     <li class="current">
-                                        <a href="/" class="current" title="Basketball">Basketball</a>
+                                        <a href="{{route('basketballProducts')}}" class="current" title="Basketball">Basketball</a>
                                     </li>
                                     <li class="current">
-                                        <a href="/" class="current" title="Football">Football</a>
+                                        <a href="{{route('footballProducts')}}" class="current" title="Football">Football</a>
                                     </li>
                                     <li class="current">
                                         <a href="/" class="current" title="Gym &amp; Training">Gym &amp; Training</a>
@@ -87,7 +87,7 @@
                                 </ul>
                             </li>
                             <li class="">
-                                <a href="{{route('products')}}" title="Giày nữ">Giày nữ</a>
+                                <a href="{{route('giay_nu')}}" title="Giày nữ">Giày nữ</a>
                             </li>
                             <li class="">
                                 <a href="{{route('tintuc')}}" title="Tin tức">Tin tức</a>

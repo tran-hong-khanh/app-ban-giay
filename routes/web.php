@@ -23,20 +23,33 @@ Route::get('/gioi-thieu','HomeController@gioithieu')->name('gioithieu');
 Route::get('/lien-he','HomeController@lienhe')->name('lienhe');
 Route::get('/tin-tuc','HomeController@tintuc')->name('tintuc');
 Route::get('/chi-tiet-tin-tuc','HomeController@chitiettintuc')->name('chitiettintuc');
-Route::get('/san-pham/chi-tiet-san-pham/{id?}/{name?}','HomeController@chitietsanpham')->name('chitietsanpham');
 
 Route::get('/gio-hang','HomeController@giohang')->name('giohang');
 Route::post('/khach-hang/cap-nhat-gio-hang', 'HomeController@updateCart')->name('updateCart');
 Route::get('/khach-hang/xoa-gio-hang/{id}', 'HomeController@removeItemInCart')->name('removeItemInCart');
 
+Route::get('/search/name-product', 'HomeController@searchByName')->name('searchByName');
+
+Route::get('/search/id-product', 'HomeController@searchByID')->name('searchByID');
+
 Route::get('/home', function () {
     return redirect()->route('products');
 });
 
-Route::get('/san-pham','HomeController@products')->name('products');
+Route::group(['prefix' => 'san-pham'], function () {
+    Route::get('/','HomeController@products')->name('products');
+    Route::get('/chi-tiet-san-pham/{id?}/{name?}','HomeController@chitietsanpham')->name('chitietsanpham');
+    Route::get('/lifestyle','HomeController@lifestyleProducts')->name('lifestyleProducts');
+    Route::get('/running','HomeController@runningProducts')->name('runningProducts');
+    Route::get('/basketball','HomeController@basketballProducts')->name('basketballProducts');
+    Route::get('/football','HomeController@footballProducts')->name('footballProducts');
+    Route::get('/giay-nu','HomeController@giay_nu')->name('giay_nu');
+
+});
 
 Route::group(['prefix' => 'khach-hang'], function () {
         Route::get('/account', 'HomeController@account')->middleware(CheckLevel::class)->name('account');
+        Route::get('/check-login', 'HomeController@checklogin')->middleware(CheckLevel::class)->name('checklogin');
         Route::get('/register', 'HomeController@render_register')->middleware(CheckLevel::class)->name('render_register');
         // Route::get('/khach-hang/profile', 'HomeController@customerProfile')->name('profile');
         // Route::post('khach-hang/update-profile', 'HomeController@updateProfile')->name('updateProfile');

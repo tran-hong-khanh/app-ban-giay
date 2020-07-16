@@ -36,7 +36,7 @@
 										<a href="{{route('products')}}" title="Trang chủ">Trang chủ</a>
 									</li>
 									<li class="">
-										<a href="{{route('gioithieu')}} title="Giới thiệu">Giới thiệu</a>
+										<a href="{{route('gioithieu')}}" title="Giới thiệu">Giới thiệu</a>
 									</li>
 									<li class="active submenu-parent" aria-expanded="false">
 										<a href="{{route('products')}}" title="Giày nam">Giày nam</a>
@@ -312,8 +312,7 @@
 							<div class="group-collection">
 								<div class="title-block">
 
-									<h1 class="title-group">Giày nam</h1>
-
+									<h1 class="title-group">Sản phẩm</h1>
 
 									<div class="browse-tags pull-right hidden-xs">
 										<span class="mr5">Sắp xếp theo:</span>
@@ -342,12 +341,11 @@
 								<div class="product-detail clearfix">
 									<div class="product-image image-resize">
 										<a href="{{route('chitietsanpham', ['id' => $product->id, 'name' => $product->name])}}" title={{$product->name}}>
-
 											<picture>
-												<img src="{{$product->image_link}}"
+											<!-- {{ asset('home/assets/images/logo.png')}} -->
+												<img src="{{asset($product->image_link)}}"
 													alt="{{$product->name}}">
 											</picture>
-
 										</a>
 										<div class="box-position-quickview">
 											<div class="wrap-btn-quickview">

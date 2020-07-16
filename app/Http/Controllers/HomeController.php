@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Admin;
+use App\Product;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -64,9 +65,6 @@ class HomeController extends Controller
         $data = $request->all();
         $items = \Cart::getContent();
         $count = 0;
-        // dd($data['Lines']);
-        // dd($data['quantity']);
-        // dd($items);
         if (isset($data['quantity'])) {
             foreach($items as $index => $item) {
                 \Cart::remove($item['id']);
@@ -100,13 +98,61 @@ class HomeController extends Controller
 
     public function products()
     {
-        #$users = DB::select('select * from users where active = ?', [1]);
-        #$products = DB::select('select * from product');
-        $products = DB::table('product')->paginate(12);
-        #$products = Product::all();
+        // $products = DB::table('product')->paginate(12);
+        // dd($products);
+        $products = Product::paginate(12);
 
         return view('homepage.sanpham', ['products' => $products]);
     }
+    public function lifestyleProducts() {
+        $products = Product::where('catalog_id', '=', 1)->paginate(12);
+        // dd($products);
+        return view('homepage.sanpham', ['products' => $products]);
+    }
+    public function runningProducts() {
+        $products = Product::where('catalog_id', '=', 2)->paginate(12);
+        // dd($products);
+        return view('homepage.sanpham', ['products' => $products]);
+    }
+    public function basketballProducts() {
+        $products = Product::where('catalog_id', '=', 3)->paginate(12);
+        // dd($products);
+        return view('homepage.sanpham', ['products' => $products]);
+    }
+    public function footballProducts() {
+        $products = Product::where('catalog_id', '=', 4)->paginate(12);
+        // dd($products);
+        return view('homepage.sanpham', ['products' => $products]);
+    }
+    public function giay_nu() {
+        $products = Product::where('catalog_id', '=', 8)->paginate(12);
+        // dd($products);
+        return view('homepage.sanpham', ['products' => $products]);
+    }
+
+    public function searchByName(Request $request) {
+        $data = $request->all();
+        $products = Product::where('name', 'like', '%' . $data['q'] . '%')->paginate(12);
+        return view('homepage.sanpham', ['products' => $products]);
+    }
+
+    // public function searchByID(Request $request) {
+    //     $data = $request->all();
+    //     $products = Product::where('id', 'like', '%' . $data['q'] . '%')->paginate(12);
+    //     // dd($products);
+    //     return view('homepage.sanpham', ['products' => $products]);
+    // }
+    public function checklogin(){
+        $user = Auth::user();
+        $name = $user->name;
+        if($name) {
+            echo $name, ' đã login';
+        }
+        else{
+            echo 'chưa login';
+        }
+    }
+    
     public function admin()
     {
         // return view('home');

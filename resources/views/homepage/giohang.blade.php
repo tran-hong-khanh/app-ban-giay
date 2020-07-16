@@ -56,7 +56,7 @@
 								<tr>
 									<td class="image">
 										<a href="">
-											<img src="{{$item['attributes']['img']}}" alt="{{$item['name']}}">
+											<img src="{{asset($item['attributes']['img'])}}" alt="{{$item['name']}}">
 										</a>
 									</td>
 									<td class="infor">
@@ -98,9 +98,9 @@
 								Thành tiền: <span>{{number_format(\Cart::getSubTotal(), 0, ',', ',')}} VNĐ</span>
 							</div>
 							<div class="text-right">
-								<a class="continue-shopping" title="Mua tiếp" href="//rossy-store.bizwebvietnam.net">Tiếp tục mua hàng</a>
+								<a class="continue-shopping" title="Mua tiếp" href="{{route('homepage')}}">Tiếp tục mua hàng</a>
 								<button class="update-cart" name="submit">Cập nhật giỏ hàng</button>
-								<a href="javascript:void(0);" onclick="Nobita.UpdateCartNoteToCheckout('cartform')" id="checkout" name="checkout" class="btn-checkout">Thanh toán</a>
+								<a href="{{route('checklogin')}}" id="checkout" name="checkout" class="btn-checkout">Thanh toán</a>
 							</div>
 						</div>
 					</div>
