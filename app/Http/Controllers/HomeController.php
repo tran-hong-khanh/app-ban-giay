@@ -144,12 +144,14 @@ class HomeController extends Controller
     // }
     public function checklogin(){
         $user = Auth::user();
-        $name = $user->name;
-        if($name) {
-            echo $name, ' đã login';
+        if($user) {
+            $name = $user->name;
+            if($name) {
+                echo $name, ' đã login';
+            }
         }
         else{
-            echo 'chưa login';
+            return redirect()->route('account');
         }
     }
     
